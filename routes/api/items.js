@@ -3,7 +3,6 @@ const router = express.Router();
 
 //Item Model
 //we need our item model to setup queries...
-
 const Item = require('../../models/Item');
 
 //ROUTES
