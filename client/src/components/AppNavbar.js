@@ -33,7 +33,7 @@ class AppNavbar extends Component {
               <Nav className="ml-auto" navbar>
                 <NavItem>
                   <NavLink href="https://google.com">Google</NavLink>
-                  <NavLink href="runescape.com">Runescape</NavLink>
+                  <NavLink href="https://runescape.com">Runescape</NavLink>
                 </NavItem>
               </Nav>
             </Collapse>
