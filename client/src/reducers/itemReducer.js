@@ -1,31 +1,36 @@
 import uuid from 'uuid';
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM} from "./../actions/types";
+import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, ITEMS_LOADING} from "./../actions/types";
 
 const initialState = {
-  items: [
-    { id: uuid(), name: 'Eggs'},
-    { id: uuid(), name: 'Milk'},
-    { id: uuid(), name: 'Chicken'},
-    { id: uuid(), name: 'Water'},
-  ]
+  items: [], //we grab this from our databse.
+  loading: false //this is here because fetching data from db isnt
+  //instant, so this allows our app to wait for the data rather than keep
+  //re sending the request.
 }
 
 export default function(state = initialState, action) {
   switch(action.type){
     case GET_ITEMS:
       return {
-        ...state
+        ...state, //returns original items that were static
+        items: action.payload, //returns items from database
+        loading: false //tells app we are no longer loading
       }
       case DELETE_ITEM:
         return {
           ...state,
-          items: state.items.filter(item => item.id !== action.payload)
+          items: state.items.filter(item => item._id !== action.payload)
         };
       case ADD_ITEM:
         return {
           ...state,
           items: [action.payload, ...state.items]
         };
+      case ITEMS_LOADING:
+          return{
+            ...state,
+            loading: true
+          }
 
 
       default:
