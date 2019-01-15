@@ -1,4 +1,4 @@
-# generic List
+# React List
 Some list thing built with Mern stack to learn  
 
 
